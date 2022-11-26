@@ -1,7 +1,9 @@
 import React from 'react';
+import UseTitle from '../../../Hooks/Title/UseTile';
 import CategoriesItem from './CategoriesItem';
 
 const Categories = () => {
+    UseTitle('Category')
     const categories = [
         {
             category_id: "01",
