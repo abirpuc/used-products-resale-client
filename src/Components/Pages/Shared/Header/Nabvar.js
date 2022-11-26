@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../../assets/resale.png'
+import { AuthContext } from '../../../AuthProvider/AuthProvider';
 
 const Nabvar = () => {
+
+    const{user,logout} = useContext(AuthContext);
 
     const menuItems = <>
         <li className='text-xl text-neutral font-semibold'><Link to="/">Home</Link></li>
         <li className='text-xl text-neutral font-semibold'><Link to="/products">Products</Link></li>
-        <li className='text-xl text-neutral font-semibold'><Link to="/login">Login</Link></li>
+        {
+            user?.email?<li className='text-xl text-neutral font-semibold'><Link onClick={logout}>Logout</Link></li>:
+            <li className='text-xl text-neutral font-semibold'><Link to="/login">Login</Link></li>
+        }
     </>
     return (
         <div className="bg-secondary">
