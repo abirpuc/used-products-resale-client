@@ -26,7 +26,7 @@ const Footer = () => {
                 <span className="footer-title">ResaleMarket</span>
                 <div className="form-control w-80">
                     <label className="label">
-                        <span className="label-text">resale@gmail.com</span>
+                        <span className="label-text text-neutral">resale@gmail.com</span>
                     </label>
                     <div className="relative">
                         <input type="text" placeholder="username@site.com" className="input input-bordered w-full pr-16" />

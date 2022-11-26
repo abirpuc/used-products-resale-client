@@ -1,14 +1,18 @@
 import React, { createContext } from 'react';
-import { getAuth } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import app from '../../Firebase/firebase.config';
 
-const AuthContext = createContext();
+export const AuthContext = createContext();
 const auth = getAuth(app);
 
 const AuthProvider = ({children}) => {
 
+    const singup = (email,password) =>{
+        return createUserWithEmailAndPassword(auth,email,password);
+    }
+
     const authInfo={
-        
+        singup,
     }
     return (
         <AuthContext.Provider value={authInfo}>

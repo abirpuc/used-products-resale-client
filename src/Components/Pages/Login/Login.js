@@ -36,11 +36,11 @@ const Login = () => {
                         <div className='my-4 text-center text-xl text-neutral'>
                             <p>If are not an Account?<span className='text-success'><Link to="/singup">Create a new Account</Link></span></p>
                         </div>
-                        <div className='grid grid-cols-1 gap-4'>
-                            <button className='btn btn-error w-1/2 mx-auto'>
+                        <div className='lg:grid lg:grid-cols-1 lg:gap-4'>
+                            <button className='btn btn-error lg:w-1/2 sm:w-full mx-auto'>
                                 <FaGoogle className='text-accent text-xl mr-2'></FaGoogle>
                                 Login with Google
-                                </button>
+                            </button>
                         </div>
                     </div>
                 </div>

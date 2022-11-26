@@ -6,6 +6,8 @@ const Nabvar = () => {
 
     const menuItems = <>
         <li className='text-xl text-neutral font-semibold'><Link to="/">Home</Link></li>
+        <li className='text-xl text-neutral font-semibold'><Link to="/products">Products</Link></li>
+        <li className='text-xl text-neutral font-semibold'><Link to="/login">Login</Link></li>
     </>
     return (
         <div className="bg-secondary">
