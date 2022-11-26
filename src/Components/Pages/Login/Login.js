@@ -1,14 +1,16 @@
 import React from 'react';
 import { FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import UseTitle from '../../Hooks/Title/UseTile';
 
 const Login = () => {
+    UseTitle('Login-page')
     return (
         <div className='w-3/4 mx-auto'>
             <div className="hero">
                 <div className="hero-content flex-col lg:flex-row">
                     <div className='w-1/2'>
-                        <img src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-135.jpg?w=2000" className="" />
+                        <img src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-135.jpg?w=2000" alt=""/>
                     </div>
                     <div className='w-1/2'>
                         <form className='px-5'>
