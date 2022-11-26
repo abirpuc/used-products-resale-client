@@ -5,10 +5,10 @@ import logo from '../../../../assets/resale.png'
 const Nabvar = () => {
 
     const menuItems = <>
-        <li className='text-xl font-semibold'><Link>Home</Link></li>
+        <li className='text-xl text-neutral font-semibold'><Link>Home</Link></li>
     </>
     return (
-        <div className="bg-base-200">
+        <div className="bg-secondary">
             <div className='navbar w-11/12 mx-auto'>
                 <div className="navbar-start">
                     <div className="dropdown">
