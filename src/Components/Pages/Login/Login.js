@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import UseTitle from '../../Hooks/Title/UseTile';
 
+
 const Login = () => {
     UseTitle('Login-page')
-    const {singin} = useContext(AuthContext)
+    const {singin,singinWithGoogle} = useContext(AuthContext)
     const handleForm =(event)=>{
         event.preventDefault();
 
@@ -20,9 +21,8 @@ const Login = () => {
             console.log(result.user);
         })
         .catch()
-
-
     }
+
     return (
         <div className='w-3/4 mx-auto'>
             <div className="hero">
@@ -55,7 +55,7 @@ const Login = () => {
                             <p>If are not an Account?<span className='text-success'><Link to="/singup">Create a new Account</Link></span></p>
                         </div>
                         <div className='lg:grid lg:grid-cols-1 lg:gap-4'>
-                            <button className='btn btn-error lg:w-1/2 sm:w-full mx-auto'>
+                            <button onClick={singinWithGoogle} className='btn btn-error lg:w-1/2 sm:w-full mx-auto'>
                                 <FaGoogle className='text-accent text-xl mr-2'></FaGoogle>
                                 Login with Google
                             </button>

@@ -1,9 +1,12 @@
 import React from 'react';
+import UseTitle from '../../Hooks/Title/UseTile';
 
 const Products = () => {
+    UseTitle('Products')
     return (
-        <div>
-            <h1>This is Products Page</h1>
+        <div className='mt-50'>
+            <h1>sideNav</h1>
+            <h1>products</h1>
         </div>
     );
 };

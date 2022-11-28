@@ -1,0 +1,14 @@
+[
+    {
+        "category_id":"01",
+        "category_name":"Smart Bike"
+    },
+    {
+        "category_id":"02",
+        "category_name":"Normal Bike"
+    },
+    {
+        "category_id":"03",
+        "category_name":"Electronics Bike"
+    }
+]
