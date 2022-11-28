@@ -1,26 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import UseTitle from '../../../Hooks/Title/UseTile';
 import CategoriesItem from './CategoriesItem';
 
 const Categories = () => {
     UseTitle('Category')
-    const categories = [
-        {
-            category_id: "01",
-            category_name: "Old Smart Bike",
-            img: 'https://s3-eu-west-1.amazonaws.com/crash.net/visordown.com/styles/large/s3/Smart%20old.jpg?itok=4VNu60f0'
-        },
-        {
-            category_id: "02",
-            category_name: "Old Normal Bike",
-            img: 'https://qph.cf2.quoracdn.net/main-qimg-6a84e3215984cf4ceea870839e5cf1ef-pjlq'
-        },
-        {
-            category_id: "03",
-            category_name: "Old Electronics Bike",
-            img: 'https://cdn.luxe.digital/media/20220130151643/best-electric-motorcycles-2022-sondors-metacycle-luxe-digital-1-780x520.jpg'
-        }
-    ]
+    const [categories,setCategory] = useState([])
+    useEffect(()=>{
+        fetch('http://localhost:5000/category')
+        .then(res => res.json())
+        .then(data => setCategory(data))
+    },[])
     return (
         <div className="w-3/4 mx-auto my-10">
             <div className="text-center w-1/2 mx-auto">

@@ -1,7 +1,7 @@
 [
     {
       "product_name": "palsure",
-      "category_id": 1,
+      "category_id": "01",
       "price": 100000,
       "description": "color: blck, model: verson2, spreed: 45km/hr, noscrach",
       "seller_name": "White Marks",
@@ -15,7 +15,7 @@
     },
     {
       "product_name": "palsure",
-      "category_id": 2,
+      "category_id": "02",
       "price": 100000,
       "description": "color: blck, model: verson2, spreed: 45km/hr, noscrach",
       "seller_name": "Lorna Stuart",
@@ -29,7 +29,7 @@
     },
     {
       "product_name": "palsure",
-      "category_id": 3,
+      "category_id": "03",
       "price": 100000,
       "description": "color: blck, model: verson2, spreed: 45km/hr, noscrach",
       "seller_name": "Briggs Rojas",
@@ -43,7 +43,7 @@
     },
     {
       "product_name": "palsure",
-      "category_id": 1,
+      "category_id": "01",
       "price": 100000,
       "description": "color: blck, model: verson2, spreed: 45km/hr, noscrach",
       "seller_name": "Mullins Allison",
@@ -57,7 +57,7 @@
     },
     {
       "product_name": "palsure",
-      "category_id": 2,
+      "category_id": "02",
       "price": 100000,
       "description": "color: blck, model: verson2, spreed: 45km/hr, noscrach",
       "seller_name": "Stout Lara",
@@ -71,7 +71,7 @@
     },
     {
       "product_name": "palsure",
-      "category_id": 1,
+      "category_id": "01",
       "price": 100000,
       "description": "color: blck, model: verson2, spreed: 45km/hr, noscrach",
       "seller_name": "Audra Reilly",
@@ -85,7 +85,7 @@
     },
     {
       "product_name": "palsure",
-      "category_id": 3,
+      "category_id": "03",
       "price": 100000,
       "description": "color: blck, model: verson2, spreed: 45km/hr, noscrach",
       "seller_name": "Park Roman",
@@ -99,7 +99,7 @@
     },
     {
       "product_name": "palsure",
-      "category_id": 2,
+      "category_id": "02",
       "price": 100000,
       "description": "color: blck, model: verson2, spreed: 45km/hr, noscrach",
       "seller_name": "Krystal Clay",
@@ -113,7 +113,7 @@
     },
     {
       "product_name": "palsure",
-      "category_id": 2,
+      "category_id": "02",
       "price": 100000,
       "description": "color: blck, model: verson2, spreed: 45km/hr, noscrach",
       "seller_name": "Tiffany Gonzalez",

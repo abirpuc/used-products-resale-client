@@ -5,7 +5,7 @@ const ProductsItem = ({ product }) => {
     return (
         <div>
             <div className="card text-neutral card-compact bg-base-100 shadow-xl">
-                <figure><img src={img} alt="Shoes" /></figure>
+                <figure className='h-full'><img className='h-full' src={img} alt="Shoes" /></figure>
                 <div className="card-body">
                     <div className='flex items-center justify-between'>
                         <h2 className="card-title">{product_name}</h2>
