@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import BookingModal from '../../../Products/BookingModal/BookingModal';
 import ProductsItem from '../../../Products/ProductsItem';
 
 const CategoryProducts = () => {
     const products = useLoaderData()
-    // const [products, setProducts] = useState([]);
-    // useEffect(()=>{
-    //     fetch('http://localhost:5000/products')
-    //     .then(res => res.json())
-    //     .then(data => setProducts(data))
-    // },[])
+    const [buy, setBuy] = useState(null);
     return (
         <div>
             <h1 className='text-center my-3 text-4xl text-info'>{products.length} Available for Bike Seal</h1>
@@ -17,10 +13,17 @@ const CategoryProducts = () => {
                 {
                     products.map(product => <ProductsItem
                         key={product._id}
-                        product = {product}
+                        product={product}
+                        setBuy={setBuy}
                     ></ProductsItem>)
                 }
             </div>
+            {
+                buy && <BookingModal
+                    setBuy={setBuy}
+                    buy={buy}
+                ></BookingModal>
+            }
         </div>
     );
 };

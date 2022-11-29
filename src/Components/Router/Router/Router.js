@@ -1,9 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 import CategoryLayout from "../../Layout/CategoryLayout";
 import Main from "../../Layout/Main";
+import MyBooking from "../../Pages/Booking/MyBooking";
 import CategoryProducts from "../../Pages/Home/Categories/CategoryData/CategoryProducts";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
+import NotFound from "../../Pages/NotFound/NotFound";
 import Products from "../../Pages/Products/Products";
 import SingUp from "../../Pages/SingUp/SingUp";
 
@@ -25,7 +27,10 @@ const router = createBrowserRouter([
                 path: '/singup',
                 element: <SingUp></SingUp>
             },
-
+            {
+                path: '/mybooking',
+                element:<MyBooking></MyBooking>
+            }
         ]
     },
     {
@@ -42,6 +47,10 @@ const router = createBrowserRouter([
                 loader:({params}) => fetch(`http://localhost:5000/products/${params.category_id}`)
             }
         ]
+    },
+    {
+        path:'/*',
+        element: <NotFound></NotFound>
     }
 ])
 

@@ -5,14 +5,20 @@ import { AuthContext } from '../../../AuthProvider/AuthProvider';
 
 const Nabvar = () => {
 
-    const{user,logout} = useContext(AuthContext);
-
+    const { user, logout } = useContext(AuthContext);
+    // const {displayName,photoURL,phoneNumber
+    // } = user;
     const menuItems = <>
         <li className='text-xl text-neutral font-semibold'><Link to="/">Home</Link></li>
         <li className='text-xl text-neutral font-semibold'><Link to="/products">Products</Link></li>
         {
-            user?.email?<li className='text-xl text-neutral font-semibold'><Link onClick={logout}>Logout</Link></li>:
-            <li className='text-xl text-neutral font-semibold'><Link to="/login">Login</Link></li>
+            user?.email ?
+                <>
+                    <li className='text-xl text-neutral font-semibold'><Link to="/mybooking">My Booking</Link></li>
+                    <li className='text-xl text-neutral font-semibold'><Link onClick={logout}>Logout</Link></li>
+                </>
+                :
+                <li className='text-xl text-neutral font-semibold'><Link to="/login">Login</Link></li>
         }
     </>
     return (
@@ -41,7 +47,9 @@ const Nabvar = () => {
                 <div className="navbar-end">
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
-                            <img src="https://placeimg.com/80/80/people" alt='' />
+                            {
+                                user?.email && <img src={user?.photoURL} title={user?.displayName} alt='' />
+                            }
                         </div>
                     </label>
                 </div>

@@ -9,7 +9,7 @@ const SingUp = () => {
     const [error,setError] = useState(null);
 
     UseTitle('registration page')
-    const {singup,updateUser} = useContext(AuthContext)
+    const {singup,userUpdate} = useContext(AuthContext)
 
    
 
@@ -28,20 +28,21 @@ const SingUp = () => {
         .then(result =>{
             const user = result.user;
             console.log(user);
-            form.reset();
             toast.success("Your registration successfully")
             const userInfo = {
                 displayName:name,
                 phoneNumber:mobile,
                 photoURL:photoURL
             }
-            updateUser(userInfo)
+            userUpdate(userInfo)
             .then(result => {
                 const user = result.user;
                 console.log(user);
                 toast.success('update information')
+                form.reset();
             })
             .catch(err => toast.err('sorry'))
+            form.reset();
         })
         .catch(err => {
             toast.error('this email already register')

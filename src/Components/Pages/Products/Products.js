@@ -1,17 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import UseTitle from '../../Hooks/Title/UseTile';
+import BookingModal from './BookingModal/BookingModal';
 import ProductsItem from './ProductsItem';
 
 const Products = () => {
     const [products, setProducts] = useState([]);
     UseTitle('Products')
+
+    const [buy, setBuy] = useState(null);
     
-    useEffect(()=>{
+    useEffect(() => {
         fetch('http://localhost:5000/products')
-        .then(res => res.json())
-        .then(data => setProducts(data))
-    },[])
+            .then(res => res.json())
+            .then(data => {
+                setProducts(data)
+            })
+    }, [])
 
     return (
         <div className='mt-50 '>
@@ -20,9 +25,16 @@ const Products = () => {
                     products.map(product => <ProductsItem
                         key={product._id}
                         product={product}
+                        setBuy={setBuy}
                     ></ProductsItem>)
                 }
             </div>
+            {
+                buy && <BookingModal
+                    setBuy={setBuy}
+                    buy={buy}
+                ></BookingModal>
+            }
         </div>
     );
 };
