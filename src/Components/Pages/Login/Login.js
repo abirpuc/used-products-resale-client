@@ -1,13 +1,19 @@
 import React, { useContext } from 'react';
 import { FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import UseTitle from '../../Hooks/Title/UseTile';
 
 
 const Login = () => {
     UseTitle('Login-page')
-    const {singin,singinWithGoogle} = useContext(AuthContext)
+    const {singin,singinWithGoogle} = useContext(AuthContext);
+
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || "/";
+
     const handleForm =(event)=>{
         event.preventDefault();
 
@@ -18,7 +24,7 @@ const Login = () => {
 
         singin(email,password)
         .then(result => {
-            console.log(result.user);
+            navigate(from, { replace: true })
         })
         .catch()
     }

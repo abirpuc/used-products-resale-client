@@ -1,44 +1,40 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
+import MyBookingItem from './MyBookingItem';
 
 const MyBooking = () => {
+    const {user}= useContext(AuthContext)
+    const [booking,setBooking] = useState([])
+
+    useEffect(()=>{
+        fetch(`http://localhost:5000/booking?customerEmail=${user?.email}`)
+        .then(res => res.json())
+        .then(data => setBooking(data))
+    },[user?.email])
+
     return (
         <div>
             <h1 className="text-center text-3xl my-4 text-success">My Booking List</h1>
             <div className="overflow-x-auto w-3/4 mx-auto my-5">
-            <table className="table table-zebra w-full">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Name</th>
-                        <th>Job</th>
-                        <th>Favorite Color</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <th>1</th>
-                        <td>Cy Ganderton</td>
-                        <td>Quality Control Specialist</td>
-                        <td>Blue</td>
-                    </tr>
-
-                    <tr>
-                        <th>2</th>
-                        <td>Hart Hagerty</td>
-                        <td>Desktop Support Technician</td>
-                        <td>Purple</td>
-                    </tr>
-
-                    <tr>
-                        <th>3</th>
-                        <td>Brice Swyre</td>
-                        <td>Tax Accountant</td>
-                        <td>Red</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+                <table className="table w-full">
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Price</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            booking.map(book => <MyBookingItem
+                                key={book._id}
+                                book={book}
+                            ></MyBookingItem>)
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };

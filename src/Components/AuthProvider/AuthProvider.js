@@ -10,16 +10,20 @@ const auth = getAuth(app);
 const AuthProvider = ({children}) => {
 
     const [user,setUser] = useState(null)
+    const [loader, setLoader]= useState(true);
 
     const singup = (email,password) =>{
+        setLoader(true)
         return createUserWithEmailAndPassword(auth,email,password);
     }
 
     const userUpdate = (userInfo) =>{
+        setLoader(true)
         return updateProfile(auth.currentUser, userInfo)
     }
 
     const singin = (email,password) =>{
+        setLoader(true)
         return signInWithEmailAndPassword(auth,email,password)
     }
 
@@ -41,6 +45,7 @@ const AuthProvider = ({children}) => {
     useEffect(() =>{
         const unsubscribe = onAuthStateChanged(auth, currentUser =>{
              setUser(currentUser)
+             setLoader(false)
          })
          return () => unsubscribe()
      },[])
@@ -51,7 +56,8 @@ const AuthProvider = ({children}) => {
         userUpdate,
         singin,
         logout,
-        singinWithGoogle
+        singinWithGoogle,
+        loader
     }
     return (
         <AuthContext.Provider value={authInfo}>
