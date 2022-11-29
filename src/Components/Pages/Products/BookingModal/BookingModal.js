@@ -9,13 +9,14 @@ const BookingModal = ({ buy, setBuy }) => {
     const [date, setDate] = useState(new Date())
     const formatDate = format(date,'PP')
     const { user } = useContext(AuthContext)
-    const {_id, product_name, price, seller_name } = buy;
+    const {_id, product_name, price, seller_name,img, description} = buy;
 
     const handleBooking = (event) => {
         event.preventDefault();
 
         const form = event.target;
 
+        const productImg = form.productimg.value;
         const sellerName = form.sellername.value;
         const productName = form.productname.value;
         const productPrice = form.productprice.value;
@@ -23,6 +24,7 @@ const BookingModal = ({ buy, setBuy }) => {
         const customerEmail = form.customeremail.value;
         const customerMobile = form.customermobile.value;
         const meetingAddress = form.meetingaddress.value;
+        const description = form.description.value;
 
         if(customerMobile === null){
             setError('Please Enter Mobile No')
@@ -34,6 +36,8 @@ const BookingModal = ({ buy, setBuy }) => {
 
         const bookingInfo = {
             booking_id: _id,
+            productImg: productImg,
+            description: description,
             sellerName,
             productName,
             productPrice,
@@ -44,6 +48,7 @@ const BookingModal = ({ buy, setBuy }) => {
             booking_date: formatDate,
         }
 
+        console.log(bookingInfo);
         fetch('http://localhost:5000/booking',{
             method:'POST',
             headers:{
@@ -54,8 +59,10 @@ const BookingModal = ({ buy, setBuy }) => {
         .then(res => res.json())
         .then(data => {
             console.log(data);
-            toast.success('your booking is success')
-            setBuy(null)
+            if(data.acknowledged){
+                toast.success('your booking successfully!');
+                setBuy(null)
+            }
         })
         .catch(err => console.log(err))
     }
@@ -71,6 +78,8 @@ const BookingModal = ({ buy, setBuy }) => {
                     }
                     <form onSubmit={handleBooking}>
                         <input type="text" name='sellername' defaultValue={seller_name} readOnly hidden className="text-neutral text-xl input input-bordered w-full my-2" />
+                        <input type="text" name='productimg' defaultValue={img} readOnly hidden className="text-neutral text-xl input input-bordered w-full my-2" />
+                        <input type="text" name='description' defaultValue={description} readOnly hidden className="text-neutral text-xl input input-bordered w-full my-2" />
                         <input type="text" name="productname" defaultValue={product_name} readOnly className="text-neutral text-xl input input-bordered w-full my-2" />
                         <input type="text" name="productprice" defaultValue={price} readOnly className="text-neutral text-xl input input-bordered w-full my-2" />
                         <input type="text" name="customername" defaultValue={user.displayName} readOnly className="text-neutral text-xl input input-bordered w-full my-2" />
