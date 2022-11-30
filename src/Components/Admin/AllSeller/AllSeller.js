@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { FaCheckCircle } from 'react-icons/fa';
 import UseTitle from '../../Hooks/Title/UseTile';
 
 const AllSeller = () => {
@@ -44,6 +45,19 @@ const AllSeller = () => {
         })
         .catch(err => console.log(err))
     }
+
+    const handleVerified = (id ) => {
+       
+        fetch(`http://localhost:5000/seller/verified/${id}`,{
+            method:'PUT'
+        })
+        .then(res => res.json() )
+        .then(data => {
+            console.log(data);
+        })
+        .catch(err => console.log(err))
+    }
+
     return (
         <div>
             <h1 className='text-center text-primary text-2xl'>All Seller</h1>
@@ -63,14 +77,23 @@ const AllSeller = () => {
                         {
                             sellers?.map(seller =>
                                 <tr>
-                                    <td>{seller.name}</td>
+                                    <td className='flex'>
+                                        {seller.name}
+                                        {
+                                            seller.verified && <FaCheckCircle className='text-primary'></FaCheckCircle>
+                                        }
+                                    </td>
                                     <td>{seller.email}</td>
                                     <td>{seller.mobile}</td>
                                     <td>
                                         <button onClick={() => handleMakeAdmin(seller._id)} className='btn btn-xs btn-secondary'>make admin</button>
                                     </td>
                                     <td>
-                                        <button onClick={() => handleMakeAdmin(seller._id)} className='btn btn-xs btn-warning'>Make Verified</button>
+                                    {/* <button onClick={() => handleVerified(seller._id)} className='btn btn-xs btn-warning'>Verified</button> */}
+                                        {
+                                            seller.verified? <button onClick={() => handleVerified(seller._id)} className='btn btn-xs btn-error'>UnVerified</button>:
+                                            <button onClick={() => handleVerified(seller._id)} className='btn btn-xs btn-warning'>Verified</button>
+                                        }
                                     </td>
                                     <td>
                                         <button onClick={() => handleDelete(seller._id)} className='btn btn-xs btn-error'>Delete</button>
