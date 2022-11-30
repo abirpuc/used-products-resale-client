@@ -29,7 +29,7 @@ const ProductsItem = ({ product,setBuy }) => {
                         <p className='text-xl'>Contract No: {mobile}</p>
                     </div>
                     <div className="card-actions flex items-center justify-between p-2">
-                        <p className='text-bold text-error'>Release Date: {date}</p>
+                    <p className='text-bold text-error'>Release Date: {date}</p>
                         {
                             user?.email ?
                                 <label onClick={() => setBuy(product)} htmlFor="buy-now" className="btn btn-primary">Buy Now</label> :

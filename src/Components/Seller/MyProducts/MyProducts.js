@@ -17,28 +17,17 @@ const MyProducts = () => {
     }, [user?.email])
     return (
         <div className='w-3/4 mx-auto my-10'>
-            <div className="overflow-x-auto">
-                <table className="table w-full">
-                    <thead>
-                        <tr className='text-white text-2xl'>
-                            <th className='w-1/4'>Product Name</th>
-                            <th className='w-1/4'>Price</th>
-                            <th className='w-1/4'>Advertise</th>
-                            <th className='w-1/4'></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                       {
-                        products.map(product => <MyProductsItem
-                            key={product._id}
-                            product = {product}
-                        ></MyProductsItem>)
-                       }
-                    </tbody>
-                </table>
+            <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4'>
+                {
+                    products.map(product => <MyProductsItem
+                        key={product._id}
+                        product={product}
+                    ></MyProductsItem>)
+                }
             </div>
         </div>
     );
 };
 
 export default MyProducts;
+
