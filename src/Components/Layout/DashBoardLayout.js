@@ -10,7 +10,7 @@ const DashBoardLayout = () => {
             <Nabvar></Nabvar>
             <div className="drawer drawer-mobile text-neutral">
                 <input id="dashboard-sidenav" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content min-h-screen">
+                <div className="drawer-content min-h-screen bg-gradient-to-r from-sky-500 to-indigo-500">
                     <Outlet></Outlet>
                 </div>
                 <div className="drawer-side text-neutral">

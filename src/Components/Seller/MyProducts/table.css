@@ -1,0 +1,10 @@
+Td, Th{
+    border: 1px solid black;
+}
+Th{
+    background: #f0f0f0;
+    height: 100px;
+}
+Tr:nth-child(even) {
+    background-color: #dddddd;
+}

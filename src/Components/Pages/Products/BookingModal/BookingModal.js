@@ -6,7 +6,7 @@ import { AuthContext } from '../../../AuthProvider/AuthProvider';
 
 const BookingModal = ({ buy, setBuy }) => {
     const [error, setError] = useState(null)
-    const [date, setDate] = useState(new Date())
+    const date= new Date()
     const formatDate = format(date,'PP')
     const { user } = useContext(AuthContext)
     const {_id, product_name, price, seller_name,img, description} = buy;

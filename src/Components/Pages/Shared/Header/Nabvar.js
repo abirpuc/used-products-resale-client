@@ -11,6 +11,9 @@ const Nabvar = () => {
     const menuItems = <>
         <li className='text-xl text-neutral font-semibold'><Link to="/">Home</Link></li>
         <li className='text-xl text-neutral font-semibold'><Link to="/products">Products</Link></li>
+        <li className='text-xl text-neutral font-semibold'><Link to="/dashboard">Dashboard</Link></li>
+        <li className='text-xl text-neutral font-semibold'><Link to="/addproduct">Add Product</Link></li>
+        <li className='text-xl text-neutral font-semibold'><Link to="/myproducts">My Product</Link></li>
         {
             user?.email ?
                 <>
