@@ -1,12 +1,14 @@
 import React, { useContext, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { FaGoogle } from 'react-icons/fa';
-import { Link,} from 'react-router-dom';
+import { Link, useNavigate,} from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import UseTitle from '../../Hooks/Title/UseTile';
 
 const SingUp = () => {
     const [error,setError] = useState(null);
+
+    const navigate = useNavigate();
 
     UseTitle('registration page')
     const {singup,userUpdate} = useContext(AuthContext)
@@ -31,15 +33,11 @@ const SingUp = () => {
             toast.success("Your registration successfully")
             const userInfo = {
                 displayName:name,
-                phoneNumber:mobile,
                 photoURL:photoURL
             }
             userUpdate(userInfo)
             .then(result => {
-                const user = result.user;
-                console.log(user);
-                toast.success('update information')
-                form.reset();
+                userInformation(name,email,mobile,userType)
             })
             .catch(err => toast.err('sorry'))
             form.reset();
@@ -47,8 +45,40 @@ const SingUp = () => {
         .catch(err => {
             toast.error('this email already register')
         })
-
     }
+
+    const userInformation = (name,email,mobile,userType) =>{
+            const user = {
+                name,
+                email,
+                mobile,
+                userType
+            }
+            fetch('http://localhost:5000/user',{
+                method:'POST',
+                headers:{
+                    'content-type':'application/json'
+                },
+                body: JSON.stringify(user)
+            })
+            .then(res => res.json())
+            .then(data=>{
+                // getUserToken(email)
+                navigate('/')
+            })
+    }
+
+    // const getUserToken = email =>{
+    //     fetch(`http://localhost:5000/jwt?email=${email}`)
+    //     .then(res => res.json())
+    //     .then(data =>{
+    //         if(data.accessToken){
+    //             localStorage.setItem('accessToken', data.accessToken)
+    //             console.log('not navigate');
+    //             navigate('/')
+    //         }
+    //     })
+    // }
     return (
         <div className='w-3/4 mx-auto my-10'>
             <div className="hero">
@@ -86,7 +116,6 @@ const SingUp = () => {
                                 <select name="usertype" className="select select-bordered text-neutral required">
                                     <option value="user">User</option>
                                     <option value="seller">Seller</option>
-                                    <option value="admin">Admin</option>
                                 </select>
                             </div>
                             <div className="form-control w-full text-neutral">

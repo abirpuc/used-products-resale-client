@@ -1,14 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import Spinner from '../../Hooks/Spinner/Spinner';
 import MyBookingItem from './MyBookingItem';
 
 const MyBooking = () => {
-    const { user } = useContext(AuthContext)
-    const [booking, setBooking] = useState([])
+    const { user } = useContext(AuthContext);
+    const [booking, setBooking] = useState([]);
+    const [spinner, setSpinner]= useState(false);
 
     const handleDelete = (id) => {
         const bookingDelete = window.confirm("Are want to delete this")
-        if (bookingDelete) {
+        if (bookingDelete){
             fetch(`http://localhost:5000/booking/${id}`, {
                 method: 'DELETE'
             })
@@ -24,9 +26,13 @@ const MyBooking = () => {
     }
 
 useEffect(() => {
+    setSpinner(true)
     fetch(`http://localhost:5000/booking?customerEmail=${user?.email}`)
         .then(res => res.json())
-        .then(data => setBooking(data))
+        .then(data => {
+            setBooking(data)
+            setSpinner(false)
+        })
 }, [user?.email])
 
 return (
@@ -53,6 +59,11 @@ return (
                     }
                 </tbody>
             </table>
+        </div>
+        <div className='text-center'>
+            {
+                spinner && <Spinner></Spinner>
+            }
         </div>
     </div>
 );

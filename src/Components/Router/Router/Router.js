@@ -1,5 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
+import AllCustomer from "../../Admin/AllCustomer/AllCustomer";
+import AllSeller from "../../Admin/AllSeller/AllSeller";
+import DashBoard from "../../Admin/DashBoard/DashBoard";
 import CategoryLayout from "../../Layout/CategoryLayout";
+import DashBoardLayout from "../../Layout/DashBoardLayout";
 import Main from "../../Layout/Main";
 import MyBooking from "../../Pages/Booking/MyBooking";
 import CategoryProducts from "../../Pages/Home/Categories/CategoryData/CategoryProducts";
@@ -46,6 +50,24 @@ const router = createBrowserRouter([
                 path: '/category/:category_id',
                 element: <CategoryProducts></CategoryProducts>,
                 loader:({params}) => fetch(`http://localhost:5000/products/${params.category_id}`)
+            }
+        ]
+    },
+    {
+        path:'/dashboard',
+        element:<PrivateRouter><DashBoardLayout></DashBoardLayout></PrivateRouter>,
+        children:[
+            {
+                path:'/dashboard',
+                element: <DashBoard></DashBoard>
+            },
+            {
+                path:'/dashboard/allseller',
+                element:<AllSeller></AllSeller>
+            },
+            {
+                path:'/dashboard/allcustomer',
+                element:<AllCustomer></AllCustomer>
             }
         ]
     },
