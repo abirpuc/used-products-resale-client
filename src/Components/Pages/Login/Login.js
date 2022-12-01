@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 import { FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
@@ -8,6 +9,7 @@ import UseTitle from '../../Hooks/Title/UseTile';
 const Login = () => {
     UseTitle('Login-page')
     const {singin,singinWithGoogle} = useContext(AuthContext);
+    const[error, setError] = useState(null)
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -26,7 +28,9 @@ const Login = () => {
         .then(result => {
             navigate(from, { replace: true })
         })
-        .catch()
+        .catch(err =>{
+            setError('This user is not found');
+        })
     }
 
     return (
@@ -37,6 +41,9 @@ const Login = () => {
                         <img src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-135.jpg?w=2000" alt=""/>
                     </div>
                     <div className='w-1/2'>
+                        {
+                            error && <h1 className='text-xl text-error'>{error}</h1>
+                        }
                         <form onSubmit={handleForm} className='px-5'>
                             <div className="form-control w-full ">
                                 <label className="label">
@@ -68,6 +75,7 @@ const Login = () => {
                         </div>
                     </div>
                 </div>
+                <Toaster></Toaster>
             </div>
         </div>
     );

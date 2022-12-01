@@ -14,7 +14,10 @@ import Products from "../../Pages/Products/Products";
 import SingUp from "../../Pages/SingUp/SingUp";
 import AddProducts from "../../Seller/AddProducts/AddProducts";
 import MyProducts from "../../Seller/MyProducts/MyProducts";
+import UpdateProduct from "../../Seller/UpdateProduct/UpdateProduct";
+import AdminPirvateRoute from "../AdminPrivateRoute/AdminPirvateRoute";
 import PrivateRouter from "../PrivateRouter/PrivateRouter";
+import SellerRoute from "../SellerRoute/SellerRoute";
 
 
 const router = createBrowserRouter([
@@ -40,13 +43,23 @@ const router = createBrowserRouter([
             },
             {
                 path:'/addproduct',
-                element:<AddProducts></AddProducts>
+                element:<SellerRoute><AddProducts></AddProducts></SellerRoute>
             },
             {
                 path:'/myproducts',
-                element:<MyProducts></MyProducts>
+                element:<SellerRoute><MyProducts></MyProducts></SellerRoute>
+            },
+            {
+                path:'/products/:id',
+                element:<SellerRoute><MyProducts></MyProducts></SellerRoute>,
+                loader:({params}) => fetch(`http://localhost:5000/products/${params.id}`)
             }
         ]
+    },
+    {
+        path:'/',
+        element:<Main></Main>,
+        children:[]
     },
     {
         path: '/',
@@ -69,7 +82,7 @@ const router = createBrowserRouter([
         children:[
             {
                 path:'/dashboard',
-                element: <DashBoard></DashBoard>
+                element: <AdminPirvateRoute><DashBoard></DashBoard></AdminPirvateRoute>
             },
             {
                 path:'/dashboard/allseller',

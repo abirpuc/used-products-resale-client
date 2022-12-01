@@ -135,7 +135,7 @@ const SingUp = () => {
                             </div>
                         </form>
                         <div className='my-4 text-center text-xl text-neutral'>
-                            <p>Already have an account?<span className='text-success'><Link to="/singup">go for Login</Link></span></p>
+                            <p>Already have an account?<span className='text-success'><Link to="/login">go for Login</Link></span></p>
                         </div>
                         <div className='grid grid-cols-1 gap-4'>
                             <button className='btn btn-error w-1/2 mx-auto'>

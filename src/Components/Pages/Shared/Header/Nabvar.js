@@ -2,18 +2,31 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../../assets/resale.png'
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
+import UseAdmin from '../../../Hooks/UseAdmin';
+import UseSeller from '../../../Hooks/UseSeller';
 
 const Nabvar = () => {
 
     const { user, logout } = useContext(AuthContext);
+    const [isAdmin] = UseAdmin(user?.email)
+    const [isSeller] = UseSeller(user?.email)
     // const {displayName,photoURL,phoneNumber
     // } = user;
     const menuItems = <>
         <li className='text-xl text-neutral font-semibold'><Link to="/">Home</Link></li>
         <li className='text-xl text-neutral font-semibold'><Link to="/products">Products</Link></li>
-        <li className='text-xl text-neutral font-semibold'><Link to="/dashboard">Dashboard</Link></li>
-        <li className='text-xl text-neutral font-semibold'><Link to="/addproduct">Add Product</Link></li>
-        <li className='text-xl text-neutral font-semibold'><Link to="/myproducts">My Product</Link></li>
+        {
+            isAdmin && <>
+                <li className='text-xl text-neutral font-semibold'><Link to="/dashboard">Dashboard</Link></li>
+                
+            </>
+        }
+        {
+            isSeller && <>
+                <li className='text-xl text-neutral font-semibold'><Link to="/addproduct">Add Product</Link></li>
+                <li className='text-xl text-neutral font-semibold'><Link to="/myproducts">My Product</Link></li>
+            </>
+        }
         {
             user?.email ?
                 <>

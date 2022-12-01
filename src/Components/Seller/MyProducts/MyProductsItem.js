@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FaCheckCircle } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const MyProductsItem = ({ product,handleDelete,handleAdvertise}) => {
     const [sellers,setSeller] = useState([])
@@ -10,10 +11,7 @@ const MyProductsItem = ({ product,handleDelete,handleAdvertise}) => {
             .then(res => res.json())
             .then(data => setSeller(data))
     }, [])   
-    const handleUpdate = id =>{
-
-    }
-
+   
     return (
         <div className="card bg-base-100 shadow-xl text-neutral">
             <figure className='h-full'><img className='h-full' src={img} alt="Shoes" /></figure>
@@ -36,7 +34,7 @@ const MyProductsItem = ({ product,handleDelete,handleAdvertise}) => {
             </div>
             <p className='text-bold text-error ml-5'>Release Date: {date}</p>
             <div className="card-actions flex items-center justify-evenly p-2">
-                <button onClick={() => handleUpdate()} className='btn btn-primary'>Update</button>
+                <Link to={`/products/${_id}`} className='btn btn-primary'>Update</Link>
                {
                     product?.advertise ? <></> :  <button onClick={() => handleAdvertise(_id)} className='btn btn-warning'>Advertise</button>
                }

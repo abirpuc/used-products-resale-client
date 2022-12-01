@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import { AuthContext } from '../AuthProvider/AuthProvider';
+import UseAdmin from '../Hooks/UseAdmin';
 import Footer from '../Pages/Shared/Footer/Footer';
 import Nabvar from '../Pages/Shared/Header/Nabvar';
 import LeftSideNab from '../Pages/Shared/LeftSideNav/LeftSideNab';
 
 const DashBoardLayout = () => {
+    const {user}= useContext(AuthContext)
+    const[isAdmin] = UseAdmin(user?.email)
     return (
         <div>
             <Nabvar></Nabvar>
