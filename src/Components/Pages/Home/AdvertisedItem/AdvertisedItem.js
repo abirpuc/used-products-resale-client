@@ -1,33 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import BookingModal from '../../Products/BookingModal/BookingModal';
 import Advertise from './Advertise';
 
 const AdvertisedItem = () => {
-    const advertisedItem = [
-        {
-            id: "01",
-            name: "First Products"
-        },
-        {
-            id: "02",
-            name: "First Products"
-        },
-        {
-            id: "03",
-            name: "First Products"
-        },
-        {
-            id: "04",
-            name: "First Products"
-        },
-        {
-            id: "05",
-            name: "First Products"
-        },
-        {
-            id: "06",
-            name: "First Products"
-        },
-    ]
+    const [advertisedItem, setAdvertisedItem] = useState([]);
+    const [spinner, setSpinner] = useState(false);
+    const [buy, setBuy] = useState(false);
+    useEffect(() => {
+        setSpinner(true)
+        fetch('http://localhost:5000/products')
+            .then(res => res.json())
+            .then(data => {
+                setAdvertisedItem(data)
+
+            })
+    }, [])
     return (
         <>
             {
@@ -42,9 +29,17 @@ const AdvertisedItem = () => {
                                 advertisedItem.map(ad => <Advertise
                                     key={ad.id}
                                     ad={ad}
+                                    setBuy={setBuy}
                                 ></Advertise>)
                             }
+
                         </div>
+                        {
+                            buy && <BookingModal
+                                setBuy={setBuy}
+                                buy={buy}
+                            ></BookingModal>
+                        }
                     </div>
             }
         </>

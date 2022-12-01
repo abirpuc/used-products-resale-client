@@ -1,20 +1,49 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
+import { AuthContext } from '../../../AuthProvider/AuthProvider';
 
-const Advertise = ({ad}) => {
+const Advertise = ({ ad,setBuy}) => {
+    const {user}= useContext(AuthContext)
+
+    const handlelogin = () =>{
+        toast.error('login first')
+    }
     return (
-        <div>
-            <div className="card bg-base-100 shadow-xl">
-                <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
-                <div className="card-body">
-                    <h2 className="card-title">Is your name</h2>
-                    <p>If a dog chews shoes whose shoes does he choose?</p>
-                    <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Buy Now</button>
+        <>
+            {
+                ad.advertise &&
+                <div className="card bg-base-100 shadow-xl">
+                    <figure className='h-full'><img className='h-full' src={ad.img} alt="Shoes" /></figure>
+                    <div className="card-body text-neutral">
+                        <div className='flex items-center justify-between'>
+                            <h2 className="card-title">{ad.product_name}</h2>
+                            <p className='ml-8 text-xl font-bold'>Price:{ad.price}</p>
+                        </div>
+                        <div>
+                            <p className='text-2xl'>Description:</p>
+                            <p className='text-xl text-neutral indent-2'>{ad.description}</p>
+                        </div>
+                        <p className='text-xl'>Address: {ad.address}</p>
+                        <h1 className='text-xl flex'>
+                            Seller Name: {ad.seller_name}
+                        </h1>
+                        <p className='text-xl'>Contract No: {ad.mobile}</p>
+                    </div>
+                    <div className="card-actions flex items-center justify-between p-2">
+                        <p className='text-bold text-error'>Release Date: {ad.date}</p>
+                        {
+                            user?.email ?
+                                <label onClick={()=>setBuy(ad)} htmlFor="buy-now" className="btn btn-primary">Buy Now</label> :
+                                <button onClick={handlelogin}  className="btn btn-primary">Buy Now</button>
+                        }
                     </div>
                 </div>
-            </div>
-        </div>
+
+            }
+        </>
     );
 };
 
 export default Advertise;
+
+// onClick={() => setBuy(product)} 

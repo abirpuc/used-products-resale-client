@@ -39,7 +39,7 @@ const AllSeller = () => {
         .then(data => {
             console.log(data);
             if(data.modifiedCount > 0){
-                const remaining = sellers.filter(rev => rev.userType !== 'admin')
+                const remaining = sellers.find(rev => rev.userType !== 'admin')
                 sellers(remaining)
             }
         })

@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
+import { FaCheckCircle } from 'react-icons/fa';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import BookingModal from './BookingModal/BookingModal';
 
-const ProductsItem = ({ product,setBuy }) => {
+const ProductsItem = ({ product, setBuy }) => {
     const { _id, img, product_name, seller_email, seller_name, price, description, address, mobile, date } = product;
     const { user } = useContext(AuthContext);
 
@@ -25,11 +26,13 @@ const ProductsItem = ({ product,setBuy }) => {
                             <p className='text-xl text-neutral indent-2'>{description}</p>
                         </div>
                         <p className='text-xl'>Address: {address}</p>
-                         <h1 className='text-xl'>Seller Name: { seller_name}</h1>
+                        <h1 className='text-xl flex'>
+                            Seller Name: {seller_name}
+                        </h1>
                         <p className='text-xl'>Contract No: {mobile}</p>
                     </div>
                     <div className="card-actions flex items-center justify-between p-2">
-                    <p className='text-bold text-error'>Release Date: {date}</p>
+                        <p className='text-bold text-error'>Release Date: {date}</p>
                         {
                             user?.email ?
                                 <label onClick={() => setBuy(product)} htmlFor="buy-now" className="btn btn-primary">Buy Now</label> :

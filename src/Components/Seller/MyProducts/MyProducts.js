@@ -15,6 +15,34 @@ const MyProducts = () => {
                 setProduct(data)
             })
     }, [user?.email])
+
+    const handleDelete = id =>{
+        const productDelete = window.confirm("Are want to delete this")
+        if (productDelete){
+            fetch(`http://localhost:5000/myproducts/${id}`, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        alert('your delete successfully done!')
+                        const remaining = products.filter(rev => rev._id !== id)
+                        setProduct(remaining)
+                      
+                    }
+                })
+        }
+    }
+
+    const handleAdvertise = id =>{
+        fetch(`http://localhost:5000/myproducts/${id}`,{
+            method:"PUT"
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        })
+    }
     return (
         <div className='w-3/4 mx-auto my-10'>
             <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4'>
@@ -22,6 +50,8 @@ const MyProducts = () => {
                     products.map(product => <MyProductsItem
                         key={product._id}
                         product={product}
+                        handleDelete={handleDelete}
+                        handleAdvertise={handleAdvertise}
                     ></MyProductsItem>)
                 }
             </div>

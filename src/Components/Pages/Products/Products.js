@@ -31,6 +31,7 @@ const Products = () => {
                         key={product._id}
                         product={product}
                         setBuy={setBuy}
+                      
                     ></ProductsItem>)
                 }
             </div>
