@@ -23,7 +23,7 @@ const MyProductsItem = ({ product, handleDelete, handleAdvertise, spinner }) => 
             sellStatus: changeStatus
         }
         console.log(updateSellStatus, updateInfo);
-        fetch(`http://localhost:5000/products/${id}`, {
+        fetch(`https://used-products-reasel-market-server.vercel.app/products/${id}`, {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json'

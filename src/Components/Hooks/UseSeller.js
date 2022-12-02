@@ -8,7 +8,7 @@ const UseSeller = email =>{
 
     useEffect(()=>{
         if(email){
-            fetch(`http://localhost:5000/user/seller/${email}`)
+            fetch(`https://used-products-reasel-market-server.vercel.app/user/seller/${email}`)
             .then(res => res.json())
             .then(data => {
                 setIsAdmin(data.isSeller);

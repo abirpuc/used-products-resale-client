@@ -54,7 +54,7 @@ const SingUp = () => {
             mobile,
             userType
         }
-        fetch('http://localhost:5000/user', {
+        fetch('https://used-products-reasel-market-server.vercel.app/user', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -69,7 +69,7 @@ const SingUp = () => {
     }
 
     // const getUserToken = email =>{
-    //     fetch(`http://localhost:5000/jwt?email=${email}`)
+    //     fetch(`https://used-products-reasel-market-server.vercel.app/jwt?email=${email}`)
     //     .then(res => res.json())
     //     .then(data =>{
     //         if(data.accessToken){

@@ -5,6 +5,7 @@ import DashBoard from "../../Admin/DashBoard/DashBoard";
 import CategoryLayout from "../../Layout/CategoryLayout";
 import DashBoardLayout from "../../Layout/DashBoardLayout";
 import Main from "../../Layout/Main";
+import Blog from "../../Pages/Blog/Blog";
 import MyBooking from "../../Pages/Booking/MyBooking";
 import CategoryProducts from "../../Pages/Home/Categories/CategoryData/CategoryProducts";
 import Home from "../../Pages/Home/Home/Home";
@@ -39,13 +40,17 @@ const router = createBrowserRouter([
                 element: <SingUp></SingUp>
             },
             {
+                path:'/blog',
+                element:<Blog></Blog>
+            },
+            {
                 path: '/mybooking',
                 element:<PrivateRouter><MyBooking></MyBooking></PrivateRouter>
             },
             {
                 path:'/payment/:id',
                 element:<PrivateRouter><Payment></Payment></PrivateRouter>,
-                loader:({params}) => fetch(`http://localhost:5000/booking/${params.id}`)
+                loader:({params}) => fetch(`https://used-products-reasel-market-server.vercel.app/booking/${params.id}`)
             },
             {
                 path:'/addproduct',
@@ -58,7 +63,7 @@ const router = createBrowserRouter([
             {
                 path:'/products/:id',
                 element:<PrivateRouter><MyProducts></MyProducts></PrivateRouter>,
-                loader:({params}) => fetch(`http://localhost:5000/products/${params.id}`)
+                loader:({params}) => fetch(`https://used-products-reasel-market-server.vercel.app/products/${params.id}`)
             }
         ]
     },
@@ -78,7 +83,7 @@ const router = createBrowserRouter([
             {
                 path: '/category/:category_id',
                 element: <CategoryProducts></CategoryProducts>,
-                loader:({params}) => fetch(`http://localhost:5000/products/${params.category_id}`)
+                loader:({params}) => fetch(`https://used-products-reasel-market-server.vercel.app/products/${params.category_id}`)
             }
         ]
     },

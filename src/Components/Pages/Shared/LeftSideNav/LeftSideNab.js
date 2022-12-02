@@ -7,7 +7,7 @@ const LeftSideNab = () => {
     const [category, setCategory] = useState([])
     useEffect(() => {
         setSpinner(true)
-        fetch('http://localhost:5000/category')
+        fetch('https://used-products-reasel-market-server.vercel.app/category')
             .then(res => res.json())
             .then(data => {
                 setCategory(data)

@@ -20,7 +20,7 @@ const Advertise = ({ ad, setBuy }) => {
 
                         </div>
                         {
-                            (ad.sellStatus === true) ? <label className=' text-primary rounded-md'>Available</label> : <label className=' text-error rounded-md'>Sold</label>
+                            (ad.sellStatus === true) ? <label className=' text-error rounded-md'>Sold</label> : <label className=' text-primary rounded-md'>Available</label>
 
                         }
                         <div>

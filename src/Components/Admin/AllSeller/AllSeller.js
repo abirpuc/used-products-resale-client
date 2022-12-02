@@ -7,7 +7,7 @@ const AllSeller = () => {
     const [sellers, setSeller] = useState([]);
     
     useEffect(() => {
-        fetch('http://localhost:5000/users/seller')
+        fetch('https://used-products-reasel-market-server.vercel.app/users/seller')
             .then(res => res.json())
             .then(data => setSeller(data))
     }, [])
@@ -15,7 +15,7 @@ const AllSeller = () => {
     const handleDelete = (id) => {
         const bookingDelete = window.confirm("Are want to delete this")
         if (bookingDelete){
-            fetch(`http://localhost:5000/users/seller/${id}`, {
+            fetch(`https://used-products-reasel-market-server.vercel.app/users/seller/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -32,7 +32,7 @@ const AllSeller = () => {
     }
 
     const handleMakeAdmin = (id)=>{
-        fetch(`http://localhost:5000/users/admin/${id}`,{
+        fetch(`https://used-products-reasel-market-server.vercel.app/users/admin/${id}`,{
             method:"PUT"
         })
         .then(res => res.json() )
@@ -48,7 +48,7 @@ const AllSeller = () => {
 
     const handleVerified = (id ) => {
        
-        fetch(`http://localhost:5000/seller/verified/${id}`,{
+        fetch(`https://used-products-reasel-market-server.vercel.app/seller/verified/${id}`,{
             method:'PUT'
         })
         .then(res => res.json() )

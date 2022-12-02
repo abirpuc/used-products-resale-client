@@ -9,7 +9,7 @@ const UpdateProduct = () => {
     console.log(product_name);
 
     // useEffect(() => {
-    //     fetch('http://localhost:5000/myproductsupdate/')
+    //     fetch('https://used-products-reasel-market-server.vercel.app/myproductsupdate/')
     //         .then(res => res.json())
     //         .then(data => {
     //             setCategory(data)
@@ -18,7 +18,7 @@ const UpdateProduct = () => {
    
 
     useEffect(() => {
-        fetch('http://localhost:5000/category')
+        fetch('https://used-products-reasel-market-server.vercel.app/category')
             .then(res => res.json())
             .then(data => {
                 setCategory(data)

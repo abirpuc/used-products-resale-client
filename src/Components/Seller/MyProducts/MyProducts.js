@@ -11,7 +11,7 @@ const MyProducts = () => {
 
     useEffect(() => {
         setSpinner(true)
-        fetch(`http://localhost:5000/myproducts?seller_email=${user?.email}`)
+        fetch(`https://used-products-reasel-market-server.vercel.app/myproducts?seller_email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setProduct(data)
@@ -22,7 +22,7 @@ const MyProducts = () => {
     const handleDelete = id =>{
         const productDelete = window.confirm("Are want to delete this")
         if (productDelete){
-            fetch(`http://localhost:5000/myproducts/${id}`, {
+            fetch(`https://used-products-reasel-market-server.vercel.app/myproducts/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -38,7 +38,7 @@ const MyProducts = () => {
     }
 
     const handleAdvertise = id =>{
-        fetch(`http://localhost:5000/myproducts/${id}`,{
+        fetch(`https://used-products-reasel-market-server.vercel.app/myproducts/${id}`,{
             method:"PUT"
         })
         .then(res => res.json())

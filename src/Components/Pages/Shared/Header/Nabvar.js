@@ -15,6 +15,7 @@ const Nabvar = () => {
     const menuItems = <>
         <li className='text-xl text-neutral font-semibold'><Link to="/">Home</Link></li>
         <li className='text-xl text-neutral font-semibold'><Link to="/products">Products</Link></li>
+        <li className='text-xl text-neutral font-semibold'><Link to="/blog">Blog</Link></li>
         {
             isAdmin && <>
                 <li className='text-xl text-neutral font-semibold'><Link to="/dashboard">Dashboard</Link></li>

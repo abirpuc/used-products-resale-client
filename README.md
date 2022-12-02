@@ -1,5 +1,9 @@
 # Getting Started with Create React App
 
+## Project Name: Sell 2nd hand motor cycle 
+
+## live site Link: [live site link: https://used-products-resale-mar-e4101.firebaseapp.com/]
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -68,3 +72,25 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+## React router dom : npm i react-roter-dom 
+[link: https://reactrouter.com/en/main]
+
+## react hot toast : npm install react-hot-toast
+[link: https://react-hot-toast.com/docs]
+
+## environment variable : npm i dotenv
+[link: https://www.npmjs.com/package/dotenv]
+
+## css library: tailwind css : 
+## npm install -D tailwindcss postcss autoprefixer, npx tailwindcss init -p
+[link: https://tailwindcss.com/docs/guides/create-react-app]
+
+## css framework: daisyUI:
+[link: https://daisyui.com/]
+
+## Reat icons: npm install react-icons –save
+[link: https://react-icons.github.io/react-icons/]
+
+

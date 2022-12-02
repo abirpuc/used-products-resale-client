@@ -15,7 +15,7 @@ const AddProducts = () => {
     const [categories, setCategory] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/category')
+        fetch('https://used-products-reasel-market-server.vercel.app/category')
             .then(res => res.json())
             .then(data => {
                 setCategory(data)
@@ -53,7 +53,7 @@ const AddProducts = () => {
             mobile:mobileNo,
             sell_status: sell_status
         }
-        fetch('http://localhost:5000/products',{
+        fetch('https://used-products-reasel-market-server.vercel.app/products',{
             method:'POST',
             headers:{
                 'content-type':'application/json'

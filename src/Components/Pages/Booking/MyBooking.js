@@ -11,7 +11,7 @@ const MyBooking = () => {
     const handleDelete = (id) => {
         const bookingDelete = window.confirm("Are want to delete this")
         if (bookingDelete){
-            fetch(`http://localhost:5000/booking/${id}`, {
+            fetch(`https://used-products-reasel-market-server.vercel.app/booking/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -27,7 +27,7 @@ const MyBooking = () => {
 
 useEffect(() => {
     setSpinner(true)
-    fetch(`http://localhost:5000/booking?customerEmail=${user?.email}`)
+    fetch(`https://used-products-reasel-market-server.vercel.app/booking?customerEmail=${user?.email}`)
         .then(res => res.json())
         .then(data => {
             setBooking(data)

@@ -50,7 +50,7 @@ const BookingModal = ({ buy, setBuy }) => {
         }
 
         console.log(bookingInfo);
-        fetch('http://localhost:5000/booking',{
+        fetch('https://used-products-reasel-market-server.vercel.app/booking',{
             method:'POST',
             headers:{
                 'content-type':'application/json'
