@@ -1,19 +1,19 @@
 import React, { useContext, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { FaGoogle } from 'react-icons/fa';
-import { Link, useNavigate,} from 'react-router-dom';
+import { Link, useNavigate, } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import UseTitle from '../../Hooks/Title/UseTile';
 
 const SingUp = () => {
-    const [error,setError] = useState(null);
+    const [error, setError] = useState(null);
 
     const navigate = useNavigate();
 
     UseTitle('registration page')
-    const {singup,userUpdate} = useContext(AuthContext)
+    const { singup, userUpdate } = useContext(AuthContext)
 
-   
+
 
     const handleForm = (event) => {
         event.preventDefault()
@@ -26,43 +26,43 @@ const SingUp = () => {
         const password = form.password.value;
         const photoURL = form.photourl.value;
 
-        singup(email,password)
-        .then(result =>{
-            const user = result.user;
-            console.log(user);
-            toast.success("Your registration successfully")
-            const userInfo = {
-                displayName:name,
-                photoURL:photoURL
-            }
-            userUpdate(userInfo)
+        singup(email, password)
             .then(result => {
-                userInformation(name,email,mobile,userType)
+                const user = result.user;
+                console.log(user);
+                toast.success("Your registration successfully")
+                const userInfo = {
+                    displayName: name,
+                    photoURL: photoURL
+                }
+                userUpdate(userInfo)
+                    .then(result => {
+                        userInformation(name, email, mobile, userType)
+                    })
+                    .catch(err => toast.err('sorry'))
+                form.reset();
             })
-            .catch(err => toast.err('sorry'))
-            form.reset();
-        })
-        .catch(err => {
-            toast.error('this email already register')
-        })
+            .catch(err => {
+                toast.error('this email already register')
+            })
     }
 
-    const userInformation = (name,email,mobile,userType) =>{
-            const user = {
-                name,
-                email,
-                mobile,
-                userType
-            }
-            fetch('http://localhost:5000/user',{
-                method:'POST',
-                headers:{
-                    'content-type':'application/json'
-                },
-                body: JSON.stringify(user)
-            })
+    const userInformation = (name, email, mobile, userType) => {
+        const user = {
+            name,
+            email,
+            mobile,
+            userType
+        }
+        fetch('http://localhost:5000/user', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
             .then(res => res.json())
-            .then(data=>{
+            .then(data => {
                 // getUserToken(email)
                 navigate('/')
             })
@@ -95,19 +95,19 @@ const SingUp = () => {
                                 <label className="label">
                                     <span className="label-text text-2xl text-neutral">Name</span>
                                 </label>
-                                <input type="text" name="name" placeholder="Name" className="input text-neutral input-bordered w-full " required/>
+                                <input type="text" name="name" placeholder="Name" className="input text-neutral input-bordered w-full " required />
                             </div>
                             <div className="form-control w-full ">
                                 <label className="label">
                                     <span className="label-text text-2xl text-neutral">Email</span>
                                 </label>
-                                <input type="email" name="email" placeholder="Email" className="input text-neutral input-bordered w-full " required/>
+                                <input type="email" name="email" placeholder="Email" className="input text-neutral input-bordered w-full " required />
                             </div>
                             <div className="form-control w-full ">
                                 <label className="label">
                                     <span className="label-text text-2xl text-neutral">Mobile</span>
                                 </label>
-                                <input type="text" name="mobile" placeholder='mobile no' className='input text-neutral input-bordered w-full' required/>
+                                <input type="text" name="mobile" placeholder='mobile no' className='input text-neutral input-bordered w-full' required />
                             </div>
                             <div className="form-control w-full">
                                 <label className="label">
@@ -122,13 +122,13 @@ const SingUp = () => {
                                 <label className="label">
                                     <span className="label-text text-neutral text-2xl">Password</span>
                                 </label>
-                                <input type="password" name="password" placeholder="Type here" className="text-neutral input input-bordered w-full " required/>
+                                <input type="password" name="password" placeholder="Type here" className="text-neutral input input-bordered w-full " required />
                             </div>
                             <div className="form-control w-full ">
                                 <label className="label">
                                     <span className="label-text text-2xl text-neutral">Profile Picture</span>
                                 </label>
-                                <input type="text" name="photourl" placeholder='photo' className='input text-neutral input-bordered w-full' required/>
+                                <input type="text" name="photourl" placeholder='photo' className='input text-neutral input-bordered w-full' required />
                             </div>
                             <div className="text-center my-4">
                                 <button className='btn btn-primary w-1/2 mx-auto'>Sing Up</button>

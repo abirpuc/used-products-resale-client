@@ -21,8 +21,8 @@ const ProductsItem = ({ product, setBuy }) => {
                             <h2 className="card-title">{product_name}</h2>
                             <p className='ml-8 text-xl font-bold'>Price:{price}</p>
                             {
-                                (sellStatus === true)? <label className=' text-primary p-2 rounded-md'>Available</label> :<label className='text-error  p-2 rounded-md'>Sold</label>
-                               
+                                (sellStatus === true) ? <label className='text-error  p-2 rounded-md'>Sold</label> :
+                                    <label className=' text-primary p-2 rounded-md'>Available</label>
                             }
                         </div>
                         <div>

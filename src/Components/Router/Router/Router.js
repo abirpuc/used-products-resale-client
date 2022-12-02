@@ -10,6 +10,7 @@ import CategoryProducts from "../../Pages/Home/Categories/CategoryData/CategoryP
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import NotFound from "../../Pages/NotFound/NotFound";
+import Payment from "../../Pages/Payment/Payment";
 import Products from "../../Pages/Products/Products";
 import SingUp from "../../Pages/SingUp/SingUp";
 import AddProducts from "../../Seller/AddProducts/AddProducts";
@@ -40,6 +41,11 @@ const router = createBrowserRouter([
             {
                 path: '/mybooking',
                 element:<PrivateRouter><MyBooking></MyBooking></PrivateRouter>
+            },
+            {
+                path:'/payment/:id',
+                element:<PrivateRouter><Payment></Payment></PrivateRouter>,
+                loader:({params}) => fetch(`http://localhost:5000/booking/${params.id}`)
             },
             {
                 path:'/addproduct',

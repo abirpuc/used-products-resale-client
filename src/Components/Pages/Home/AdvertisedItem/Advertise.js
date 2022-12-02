@@ -10,7 +10,7 @@ const Advertise = ({ ad, setBuy }) => {
     return (
         <>
             {
-                (ad.advertise && ad.sellStatus === true) &&
+                (ad.advertise && ad.sell_status === true) &&
                 <div className="card bg-base-100 shadow-xl">
                     <figure className='h-full'><img className='h-full' src={ad.img} alt="Shoes" /></figure>
                     <div className="card-body text-neutral">

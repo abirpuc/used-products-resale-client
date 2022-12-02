@@ -45,6 +45,7 @@ const BookingModal = ({ buy, setBuy }) => {
             customerEmail,
             customerMobile,
             meetingAddress,
+            payment:false,
             booking_date: formatDate,
         }
 

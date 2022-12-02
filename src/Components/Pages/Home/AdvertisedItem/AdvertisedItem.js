@@ -16,7 +16,7 @@ const AdvertisedItem = () => {
                 setSpinner(false)
             })
     }, [])
-    const sell = advertisedItem.filter(sell => sell.sellStatus === true)
+    const sell = advertisedItem.filter(sell => sell.sell_status === true)
     console.log(sell);
     return (
         <>

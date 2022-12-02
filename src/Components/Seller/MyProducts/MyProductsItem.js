@@ -65,9 +65,9 @@ const MyProductsItem = ({ product, handleDelete, handleAdvertise, spinner }) => 
                 <p className='text-bold text-error ml-5'>Release Date: {date}</p>
                 <div className="card-actions flex items-center justify-evenly p-2">
                     {
-                        (sellStatus === true) ? <button onClick={() => handleSellStatus(_id)} className='btn btn-primary'>Available</button>
-                            :
-                            <button onClick={() => handleSellStatus(_id)} className='btn btn-success'>Sold</button>
+                        (sellStatus === true) ?<button onClick={() => handleSellStatus(_id)} className='btn btn-success'>Sold</button>
+                            :<button onClick={() => handleSellStatus(_id)} className='btn btn-primary'>Available</button>
+                            
                     }
                     {
                         product?.advertise ? <></> : <button onClick={() => handleAdvertise(_id)} className='btn btn-warning'>Advertise</button>
