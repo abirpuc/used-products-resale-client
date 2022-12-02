@@ -11,14 +11,17 @@ const AdvertisedItem = () => {
         fetch('http://localhost:5000/products')
             .then(res => res.json())
             .then(data => {
+               
                 setAdvertisedItem(data)
-
+                setSpinner(false)
             })
     }, [])
+    const sell = advertisedItem.filter(sell => sell.sellStatus === true)
+    console.log(sell);
     return (
         <>
             {
-                (advertisedItem.length <= 0) ? <></> :
+                (sell.length <= 0) ? <></> :
                     <div className='mt-10 w-3/4 mx-auto'>
                         <div className='text-center text-info w-3/4 mx-auto'>
                             <h1 className='text-5xl'>Advertised Products</h1>

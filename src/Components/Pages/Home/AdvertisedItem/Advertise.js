@@ -4,14 +4,13 @@ import { AuthContext } from '../../../AuthProvider/AuthProvider';
 
 const Advertise = ({ ad, setBuy }) => {
     const { user } = useContext(AuthContext)
-    const order_status = 'true'
     const handlelogin = () => {
         toast.error('login first')
     }
     return (
         <>
             {
-                (ad.advertise && order_status === 'true') &&
+                (ad.advertise && ad.sellStatus === true) &&
                 <div className="card bg-base-100 shadow-xl">
                     <figure className='h-full'><img className='h-full' src={ad.img} alt="Shoes" /></figure>
                     <div className="card-body text-neutral">
