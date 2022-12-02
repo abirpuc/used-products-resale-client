@@ -1,13 +1,13 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { FaCheckCircle } from 'react-icons/fa';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
-import BookingModal from './BookingModal/BookingModal';
+import UseSeller from '../../Hooks/UseSeller';
 
 const ProductsItem = ({ product, setBuy }) => {
-    const { _id, img, product_name, seller_email, seller_name, price, description, address, mobile, date } = product;
+    const { img, product_name, seller_email, seller_name, price, description, address, mobile, date,
+        sellStatus } = product;
     const { user } = useContext(AuthContext);
-
     const handlelogin = () => {
         toast.error('please login first')
     }
@@ -20,6 +20,10 @@ const ProductsItem = ({ product, setBuy }) => {
                         <div className='flex items-center justify-between'>
                             <h2 className="card-title">{product_name}</h2>
                             <p className='ml-8 text-xl font-bold'>Price:{price}</p>
+                            {
+                                (sellStatus === true)? <label className=' text-primary p-2 rounded-md'>Available</label> :<label className='text-error  p-2 rounded-md'>Sold</label>
+                               
+                            }
                         </div>
                         <div>
                             <p className='text-2xl'>Description:</p>

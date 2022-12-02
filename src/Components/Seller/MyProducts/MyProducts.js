@@ -6,13 +6,16 @@ import MyProductsItem from './MyProductsItem';
 const MyProducts = () => {
     UseTitle('My-Products')
     const { user } = useContext(AuthContext);
-    const [products, setProduct] = useState([])
+    const [products, setProduct] = useState([]);
+    const [spinner,setSpinner] = useState(false);
 
     useEffect(() => {
+        setSpinner(true)
         fetch(`http://localhost:5000/myproducts?seller_email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setProduct(data)
+                setSpinner(false)
             })
     }, [user?.email])
 
@@ -43,6 +46,9 @@ const MyProducts = () => {
             console.log(data);
         })
     }
+
+
+
     return (
         <div className='w-3/4 mx-auto my-10'>
             <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4'>
@@ -52,6 +58,7 @@ const MyProducts = () => {
                         product={product}
                         handleDelete={handleDelete}
                         handleAdvertise={handleAdvertise}
+                        spinner={spinner}
                     ></MyProductsItem>)
                 }
             </div>

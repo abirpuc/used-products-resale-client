@@ -36,6 +36,7 @@ const AddProducts = () => {
         const location = form.location.value;
         const img = form.img.value;
         const description = form.description.value;
+        const sell_status = true;
 
         const productInfo = {
             seller_email: user.email,
@@ -50,6 +51,7 @@ const AddProducts = () => {
             used:usedTime,
             condition:productCondition,
             mobile:mobileNo,
+            sell_status: sell_status
         }
         fetch('http://localhost:5000/products',{
             method:'POST',

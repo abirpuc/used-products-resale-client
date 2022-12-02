@@ -1,24 +1,29 @@
 import React, { useContext } from 'react';
-import toast from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
 
-const Advertise = ({ ad,setBuy}) => {
-    const {user}= useContext(AuthContext)
-
-    const handlelogin = () =>{
+const Advertise = ({ ad, setBuy }) => {
+    const { user } = useContext(AuthContext)
+    const order_status = 'true'
+    const handlelogin = () => {
         toast.error('login first')
     }
     return (
         <>
             {
-                ad.advertise &&
+                (ad.advertise && order_status === 'true') &&
                 <div className="card bg-base-100 shadow-xl">
                     <figure className='h-full'><img className='h-full' src={ad.img} alt="Shoes" /></figure>
                     <div className="card-body text-neutral">
                         <div className='flex items-center justify-between'>
                             <h2 className="card-title">{ad.product_name}</h2>
                             <p className='ml-8 text-xl font-bold'>Price:{ad.price}</p>
+
                         </div>
+                        {
+                            (ad.sellStatus === true) ? <label className=' text-primary rounded-md'>Available</label> : <label className=' text-error rounded-md'>Sold</label>
+
+                        }
                         <div>
                             <p className='text-2xl'>Description:</p>
                             <p className='text-xl text-neutral indent-2'>{ad.description}</p>
@@ -33,10 +38,11 @@ const Advertise = ({ ad,setBuy}) => {
                         <p className='text-bold text-error'>Release Date: {ad.date}</p>
                         {
                             user?.email ?
-                                <label onClick={()=>setBuy(ad)} htmlFor="buy-now" className="btn btn-primary">Buy Now</label> :
-                                <button onClick={handlelogin}  className="btn btn-primary">Buy Now</button>
+                                <label onClick={() => setBuy(ad)} htmlFor="buy-now" className="btn btn-primary">Buy Now</label> :
+                                <button onClick={handlelogin} className="btn btn-primary">Buy Now</button>
                         }
                     </div>
+                    <Toaster></Toaster>
                 </div>
 
             }
